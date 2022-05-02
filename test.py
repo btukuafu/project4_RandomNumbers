@@ -1,4 +1,3 @@
-from importlib.metadata import distribution
 import os
 import rng
 
