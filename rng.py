@@ -20,6 +20,7 @@ def xorshift():
 
 	return state[0]
 
-num = xorshift()
-print(num)
-exit(num)
+if __name__ == "__main__":
+	num = xorshift()
+	print(num)
+	exit(num)
