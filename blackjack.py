@@ -26,25 +26,25 @@ def hand_value(hand):
 	return value
 
 def handle_blackjack(house, player):
-	house_blackjack = house[1] == 1 or house[1] == 10 and house[0] + house[1] == 11
-	player_blackjack = player[1] == 1 or player[1] == 10 and player[0] + player[1] == 11
+	house_blackjack = (house[1] == 1 or house[1] == 10) and house[0] + house[1] == 11
+	player_blackjack = (player[1] == 1 or player[1] == 10) and player[0] + player[1] == 11
 
 	if house_blackjack and player_blackjack:
-		print(f"Dealt cards:\n\tHouse:\t{names[house[0]]}, {names[house[1]]} (21)\n\tYou:\t{names[player[0]]}, {names[player[1]]} ({hand_value(player)})")
+		print(f"Dealt cards:\n\tHouse:\t{names[house[0]]}, {names[house[1]]} ({hand_value(house)})\n\tYou:\t{names[player[0]]}, {names[player[1]]} ({hand_value(player)})")
 		print("It's a push")
 		return True
 	elif house_blackjack:
-		print(f"Dealt cards:\n\tHouse:\t{names[house[0]]}, {names[house[1]]} (21)\n\tYou:\t{names[player[0]]}, {names[player[1]]} ({hand_value(player)})")
+		print(f"Dealt cards:\n\tHouse:\t{names[house[0]]}, {names[house[1]]} ({hand_value(house)})\n\tYou:\t{names[player[0]]}, {names[player[1]]} ({hand_value(player)})")
 		print("Blackjack, the house wins")
 		return True
 	elif player_blackjack:
-		print(f"Dealt cards:\n\tHouse:\t{names[house[0]]}, {names[house[1]]} (21)\n\tYou:\t{names[player[0]]}, {names[player[1]]} ({hand_value(player)})")
+		print(f"Dealt cards:\n\tHouse:\t{names[house[0]]}, {names[house[1]]} ({hand_value(house)})\n\tYou:\t{names[player[0]]}, {names[player[1]]} ({hand_value(player)})")
 		print("Blackjack, you win")
 		return True
 
 def play():
 	deck = [i+1 for i in range(13)] * 4
-	shuffle(deck)
+	# shuffle(deck)
 
 	# deal cards
 	house, player = [], []
@@ -52,6 +52,7 @@ def play():
 	house.append(deck.pop())
 	player.append(deck.pop())
 	house.append(deck.pop()) # face up
+	player = [1, 1]
 
 	if handle_blackjack(house, player):
 		return
@@ -76,6 +77,7 @@ def play():
 		house.append(deck.pop())
 
 	if hand_value(house) > 21:
+		print(f"Dealt cards:\n\tHouse:\t{[names[card] for card in house]} ({hand_value(house)})\n\tYou:\t{[names[card] for card in player]} ({hand_value(player)})")
 		print("The house busted, you win")
 		return
 
