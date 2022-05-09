@@ -44,7 +44,7 @@ def handle_blackjack(house, player):
 
 def play():
 	deck = [i+1 for i in range(13)] * 4
-	# shuffle(deck)
+	shuffle(deck)
 
 	# deal cards
 	house, player = [], []
