@@ -52,7 +52,6 @@ def play():
 	house.append(deck.pop())
 	player.append(deck.pop())
 	house.append(deck.pop()) # face up
-	player = [1, 1]
 
 	if handle_blackjack(house, player):
 		return
